@@ -7,14 +7,16 @@ class Node:
 		self.next = None
 
 
-node1 = Node("B")
+node1 = Node("A")
 node2 = Node("B")
-node3 = Node("B")
+node3 = Node("G")
 node4 = Node("B")
+node5 = Node("C")
 
 node1.next = node2
 node2.next = node3
 node3.next = node4
+node4.next = node5
 
 # test priting linked list
 
@@ -56,11 +58,16 @@ while node_reference:
 			else:
 				node_previous = node_checking
 				node_checking = node_checking.next
-				#print("c")
+				#print("node_previous", node_previous.mensagem)
+				#print("node_checking", node_checking.mensagem)
 		elif node_reference.mensagem==node_checking.mensagem:
 			node_previous.next = None		
 			node_checking = node_checking.next
 			#print("d")
+		elif node_reference.mensagem!=node_checking.mensagem:
+			node_previous = node_checking
+			node_checking = node_checking.next
+			#print("f")
 	node_checking = node_reference.next
 	node_reference = node_reference.next
 	#print("e")
