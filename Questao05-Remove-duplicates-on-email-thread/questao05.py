@@ -6,43 +6,38 @@ class Node:
 		self.mensagem = mensagem
 		self.next = None
 
+	def listing(self):
+		node = self
+		while (node):
+			print(node.mensagem)
+			node = node.next
 
-node1 = Node("A")
-node2 = Node("B")
-node3 = Node("G")
-node4 = Node("B")
-node5 = Node("C")
 
-node1.next = node2
-node2.next = node3
-node3.next = node4
-node4.next = node5
+node_first = None
+temp = None
+
+print('Please, include the messages (type exit to quit):')
+
+message = input("Message: ")
+node_first = Node(message)
+temp = node_first
+
+while True:
+	message = input("Message: ")
+	if message=='exit':
+		break
+	node = Node(message)
+	temp.next = node
+	temp = node
+	x =+ 1
 
 # test priting linked list
+print('The linked list of messages informed:')
+node = node_first
+node.listing()
 
-node = node1
-while (node):
-	print(node.mensagem)
-	node = node.next
-
-
-# test removing duplicated node
-'''
-
-while (node):
-	print(node.mensagem)
-	if node.next:
-		if node.mensagem==node.next.mensagem:
-			if node.next.next:
-				node.next=node.next.next
-			else:
-				node.next=None
-	node = node.next
-
-# test priting linked list after the change
-'''
-node_reference = node1
-node_checking = node1
+node_reference = node_first
+node_checking = node_first
 
 while node_reference:
 	while node_checking:
@@ -72,10 +67,8 @@ while node_reference:
 	node_reference = node_reference.next
 	#print("e")
 
-print("XXXXXXXXXXXXXXXXXXXXXX  linked list after the change")
+print("The linked list after removing duplicated messages: ")
 
 
-node = node1
-while (node):
-	print(node.mensagem)
-	node = node.next
+node = node_first
+node.listing()
