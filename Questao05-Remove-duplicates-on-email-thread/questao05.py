@@ -7,16 +7,14 @@ class Node:
 		self.next = None
 
 
-node1 = Node("Segue, Att")
-node2 = Node("Segue, Att")
-node3 = Node("Oi ciclando, tudo tranquilo e com vc?")
-node4 = Node("Segue, Att")
-node5 = Node("de boa..")
+node1 = Node("B")
+node2 = Node("B")
+node3 = Node("B")
+node4 = Node("B")
 
 node1.next = node2
 node2.next = node3
 node3.next = node4
-node4.next = node5
 
 # test priting linked list
 
@@ -49,12 +47,23 @@ while node_reference:
 		if node_checking.next:
 			if node_reference.mensagem == node_checking.next.mensagem:
 				if node_checking.next.next:
+					node_previous = node_checking
 					node_checking.next = node_checking.next.next
+					#print("a")
 				else:
 					node_checking.next = None
-		node_checking = node_checking.next
+					#print("b")
+			else:
+				node_previous = node_checking
+				node_checking = node_checking.next
+				#print("c")
+		elif node_reference.mensagem==node_checking.mensagem:
+			node_previous.next = None		
+			node_checking = node_checking.next
+			#print("d")
+	node_checking = node_reference.next
 	node_reference = node_reference.next
-
+	#print("e")
 
 print("XXXXXXXXXXXXXXXXXXXXXX  linked list after the change")
 
